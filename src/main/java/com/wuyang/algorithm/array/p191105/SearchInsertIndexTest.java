@@ -1,34 +1,28 @@
-package com.wuyang.algorithm.array;
+package com.wuyang.algorithm.array.p191105;
 
 /**
- * 描述：todo
+ * 描述：查询有序数组中制定目标值的位置，如果目标值不存在，则返回目标值应该插入的位置
  *
  * @author wuyang
  * @date 2019/11/5
  **/
 public class SearchInsertIndexTest {
 
-    /**
-     * 使用二分查找查询指定的数字在数组中的下标
-     * @param arr
-     * @param target
-     * @return
-     */
-    public static int searchInsert(int[] arr, int target) {
+    public static int searchInsertINdex(int[] arr, int target) {
         if (arr == null || arr.length == 0) {
             return 0;
         }
         int left = 0;
         int right = arr.length;
         while (left < right) {
-            int mid = (left + right) / 2;
+            int mid = (left + right) >>> 1;
             if (arr[mid] < target) {
                 left = mid + 1;
             } else {
-                right = mid - 1;
+                right = mid;
             }
         }
-        return left;
+        return right;
     }
 
 }
